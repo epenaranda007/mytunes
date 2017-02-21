@@ -8,12 +8,17 @@ var SongQueue = Backbone.Collection.extend({
       if (this.length === 1) {
         this.playFirst();
       }
-      console.log('event triggered');
     }, this);
 
-    this.at(0).on('change', function() {
-      console.log('triggered songPlayEnd');
+    this.on('ended', function() {
       this.shift();
+      if (this.length) {
+        this.playFirst();
+      }
+    }, this);
+
+    this.on('dequeue', function() {
+      this.remove(this.at(0));
     }, this);
 
   }, 
@@ -23,7 +28,8 @@ var SongQueue = Backbone.Collection.extend({
   },
 
   playFirst: function() {
-    console.log('playFirst triggered');
-  } 
+    this.at(0).play();
+  },
+
 
 });

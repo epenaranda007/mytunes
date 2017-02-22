@@ -13,9 +13,7 @@ var LibraryEntryView = Backbone.View.extend({
   },
 
   inititialize: function() {
-    this.collection.on('add', function() {
-      this.render();
-    });
+
   },
 
   render: function() {

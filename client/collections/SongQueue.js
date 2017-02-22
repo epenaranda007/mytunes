@@ -4,7 +4,7 @@ var SongQueue = Backbone.Collection.extend({
   model: SongModel,
 
   initialize: function() {
-    this.on('change add', function() {
+    this.on('add', function() {
       if (this.length === 1) {
         this.playFirst();
       }
@@ -25,19 +25,16 @@ var SongQueue = Backbone.Collection.extend({
       this.remove(song);
     }, this);
 
-
-
-    // this.on('enqueue', function(song) {
-    //   this.trigger('change', this);
-    //   this.add(song);  
-    // });
+    this.on('enqueue', function(song) {
+      this.add(song);  
+    });
 
   },
 
-  enqueue: function (song) {
-    this.add(song);
-    this.trigger('change', this);
-  },
+  // enqueue: function (song) {
+  //   this.add(song);
+  //   this.trigger('change', this);
+  // },
 
   playFirst: function() {
     this.at(0).play();
@@ -46,6 +43,5 @@ var SongQueue = Backbone.Collection.extend({
   dequeue: function (songId) {
     this.trigger('change', this);
   },
-
 
 });

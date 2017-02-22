@@ -15,29 +15,30 @@ var Songs = Backbone.Collection.extend({
 
 });
 
-var mySongs;
+var mySongs = [];
 
-$.ajax({
-     method: 'GET',
-     url: '/some/url',
-     success: function(resp) { //handle response}
-  })
+// $.ajax({
+//      method: 'GET',
+//      url: '/some/url',
+//      success: function(resp) {
+//        mySongs = resp.results;
+//      } //handle response}
+//   });
 
 
-//var allSongs = [];
+var allSongs = [];
 
-// var dataSet = {
-//   fetch: function() {
-//     $.ajax({
-//       url: 'http://parse.sfm6.hackreactor.com/mytunes/classes/songs',
-//       type: 'GET',
-//       datatype: 'jsonp',
-//       success: function(data) {
-//         $allMessages = data.results;
-//         for (message of $allMessages) {
-//           app.renderMessage(message);
-//         }
-//       }
-//     });
-//   }
-// };
+var dataSet = {
+  fetch: function() {
+    $.ajax({
+      url: 'http://parse.sfm6.hackreactor.com/mytunes/classes/songs',
+      type: 'GET',
+      datatype: 'jsonp',
+      success: function(data) {
+        allSongs = data.results;
+        console.log(data.results);
+    
+      }
+    });
+  }
+};

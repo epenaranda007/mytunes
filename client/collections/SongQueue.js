@@ -18,7 +18,7 @@ var SongQueue = Backbone.Collection.extend({
     }, this);
 
     this.on('dequeue', function(song) {
-      this.remove(song);
+      this.shift();
     }, this);
 
     this.on('delete', function(song) {
@@ -31,17 +31,23 @@ var SongQueue = Backbone.Collection.extend({
 
   },
 
-  // enqueue: function (song) {
-  //   this.add(song);
-  //   this.trigger('change', this);
-  // },
+  enqueue: function(song) {
+    this.add(song);
+    this.trigger('change', this);
+  },
 
   playFirst: function() {
     this.at(0).play();
   },
 
-  dequeue: function (songId) {
+  dequeue: function(songId) {
+    this.shift();
     this.trigger('change', this);
   },
+
+  delete: function(song) {
+    this.remove(song);
+    this.trigger('change', this);
+  }
 
 });

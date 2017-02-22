@@ -66,6 +66,17 @@ describe('SongQueue', function() {
     });
   });
 
+  // describe('when a song is removed from the queue', function() {
+  //   it('removes the song', function() {
+  //     removeSpy = sinon.spy(SongQueue.prototype, 'remove');
+  //     var songQueue = new SongQueue(songData1);
+  //     songQueue.enqueue(songData2);
+  //     var el = songQueue.length;
+  //     songQueue.at(0).dequeue();
+  //     expect(songQueue.length).to.equal(el - 1);
+  //   });
+  // });
+
   describe('playFirst', function() {
     it('plays the first song in the queue', function() {
       sinon.spy(SongModel.prototype, 'play');
@@ -86,6 +97,16 @@ describe('SongQueue', function() {
     });
   });
 
+  describe('NEW TEST when a song is removed the queue length shortens by one', function() {
+    it('removes the song', function() {
+      removeSpy = sinon.spy(SongQueue.prototype, 'remove');
+      var songQueue = new SongQueue(songData1);
+      var Peter = songQueue.length;
+      songQueue.at(0).deleteSong();
+      expect(songQueue.length).to.equal(Peter - 1);
+      SongQueue.prototype.remove.restore();
+    });
+  });
 
 
 });

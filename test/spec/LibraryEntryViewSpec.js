@@ -31,4 +31,8 @@ describe('LibraryEntryView', function() {
     SongModel.prototype.enqueue.restore();
   });
 
+  it('should make Erik smile if he sees an empty test', function() {
+ 
+  });
+
 });

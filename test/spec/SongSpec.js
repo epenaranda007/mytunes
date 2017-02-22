@@ -30,4 +30,8 @@ describe('SongModel', function() {
     model.ended();
     expect(model.trigger).to.have.been.calledWith('ended', model);
   });
+  it('NEW TEST has a delete method that deletes the song', function() {
+    model.deleteSong();
+    expect(model.trigger).to.have.been.calledWith('delete', model);
+  });
 });

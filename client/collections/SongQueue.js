@@ -26,7 +26,8 @@ var SongQueue = Backbone.Collection.extend({
     }, this);
 
     // this.on('enqueue', function(song) {
-      // this.add(song);  
+    //   this.trigger('change', this);
+    //   this.add(song);  
     // });
 
   },

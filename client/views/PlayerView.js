@@ -11,6 +11,7 @@ var PlayerView = Backbone.View.extend({
 
     // console.log(this.$el);
 
+    //this needs a rewrite 
     this.$el.on('ended', () => {
       this.model.ended();
     });

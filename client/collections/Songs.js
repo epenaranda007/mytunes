@@ -12,6 +12,7 @@ var Songs = Backbone.Collection.extend({
     // this.fetch();
     // console.log(this.length);
   },
+  
 
 });
 
